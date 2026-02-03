@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Trading Strategies{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lightweight-charts@4.1.1/dist/lightweight-charts.standalone.production.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        surface: {
+                            DEFAULT: '#1a1a2e',
+                            light: '#16213e',
+                            lighter: '#0f3460',
+                        },
+                        accent: '#e94560',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="h-full bg-surface text-gray-200 font-mono">
+    <div id="app" class="h-full flex flex-col">
+        <!-- Header -->
+        <header class="bg-surface-light border-b border-gray-700 px-6 py-3 flex items-center justify-between shrink-0">
+            <h1 class="text-lg font-bold tracking-wide text-white">Trading Strategies</h1>
+            <span class="text-xs text-gray-500">Backtest &amp; Visualize</span>
+        </header>
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
